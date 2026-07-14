@@ -13,8 +13,8 @@ The repository is split into two primary directories:
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript, Vite, React Router DOM, Axios, Lucide React (Icons), Vanilla CSS
-- **Backend**: PHP 8+, Laravel 11, Laravel Sanctum, MySQL
+- **Frontend**: React 19, TypeScript, Vite, React Router DOM, Axios, Lucide React (Icons), Vanilla CSS
+- **Backend**: PHP 8+, Laravel 13, Laravel Sanctum, MySQL
 
 ---
 
