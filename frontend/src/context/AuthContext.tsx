@@ -1,9 +1,18 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import api from '../services/api';
 
-export const AuthContext = createContext();
+interface AuthContextType {
+  user: any;
+  login: (email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string, password_confirmation: string) => Promise<void>;
+  logout: () => Promise<void>;
+  loading: boolean;
+}
 
-export const AuthProvider = ({ children }) => {
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -37,13 +46,13 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const login = async (email, password) => {
+  const login = async (email: string, password: string) => {
     const response = await api.post('/login', { email, password });
     localStorage.setItem('token', response.data.access_token);
     setUser(response.data.user);
   };
 
-  const register = async (name, email, password, password_confirmation) => {
+  const register = async (name: string, email: string, password: string, password_confirmation: string) => {
     const response = await api.post('/register', { name, email, password, password_confirmation });
     localStorage.setItem('token', response.data.access_token);
     setUser(response.data.user);
