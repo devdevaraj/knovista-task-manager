@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import type { Task } from '../hooks/useTasks';
+import type { FormEvent, ChangeEvent } from 'react';
 
-const TaskModal = ({ task, onClose, onSave }) => {
+interface TaskModalProps {
+  task?: Task | null;
+  onClose: () => void;
+  onSave: (taskData: Partial<Task>) => void;
+}
+
+const TaskModal = ({ task, onClose, onSave }: TaskModalProps) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -22,12 +30,12 @@ const TaskModal = ({ task, onClose, onSave }) => {
     }
   }, [task]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSave(formData);
   };
@@ -42,27 +50,27 @@ const TaskModal = ({ task, onClose, onSave }) => {
         <form onSubmit={handleSubmit} className="task-form">
           <div className="form-group">
             <label>Title</label>
-            <input 
-              type="text" 
-              name="title" 
-              value={formData.title} 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
               placeholder="Task title"
             />
           </div>
-          
+
           <div className="form-group">
             <label>Description</label>
-            <textarea 
-              name="description" 
-              value={formData.description} 
-              onChange={handleChange} 
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
               placeholder="Task details"
               rows={3}
             />
           </div>
-          
+
           <div className="form-row">
             <div className="form-group">
               <label>Status</label>
@@ -72,7 +80,7 @@ const TaskModal = ({ task, onClose, onSave }) => {
                 <option value="done">Done</option>
               </select>
             </div>
-            
+
             <div className="form-group">
               <label>Priority</label>
               <select name="priority" value={formData.priority} onChange={handleChange}>
@@ -82,17 +90,17 @@ const TaskModal = ({ task, onClose, onSave }) => {
               </select>
             </div>
           </div>
-          
+
           <div className="form-group">
             <label>Due Date</label>
-            <input 
-              type="date" 
-              name="due_date" 
-              value={formData.due_date} 
-              onChange={handleChange} 
+            <input
+              type="date"
+              name="due_date"
+              value={formData.due_date}
+              onChange={handleChange}
             />
           </div>
-          
+
           <div className="modal-actions">
             <button type="button" className="btn btn-outline" onClick={onClose}>Cancel</button>
             <button type="submit" className="btn btn-primary">Save Task</button>

@@ -17,10 +17,9 @@ const Register = () => {
     try {
       await register(name, email, password, passwordConfirmation);
       navigate('/');
-    } catch (error) {
-      const err = error as any;
-      if (err.response && err.response.data.errors) {
-        setErrors(err.response.data.errors);
+    } catch (error: any) {
+      if (error.response && error.response.data.errors) {
+        setErrors(error.response.data.errors);
       } else {
         setErrors({ general: ['Registration failed. Please try again.'] });
       }

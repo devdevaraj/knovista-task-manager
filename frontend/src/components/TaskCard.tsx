@@ -1,8 +1,15 @@
-import React from 'react';
 import { Edit2, Trash2, Clock } from 'lucide-react';
+import type { Task } from '../hooks/useTasks';
 
-const TaskCard = ({ task, onEdit, onDelete, onStatusChange }) => {
-  const priorityColors = {
+interface TaskCardProps {
+  task: Task;
+  onEdit: () => void;
+  onDelete: () => void;
+  onStatusChange: (status: string) => void;
+}
+
+const TaskCard = ({ task, onEdit, onDelete, onStatusChange }: TaskCardProps) => {
+  const priorityColors: Record<string, string> = {
     low: 'bg-green',
     medium: 'bg-yellow',
     high: 'bg-red'
@@ -21,7 +28,7 @@ const TaskCard = ({ task, onEdit, onDelete, onStatusChange }) => {
       </div>
       <h4 className="task-title">{task.title}</h4>
       {task.description && <p className="task-desc">{task.description}</p>}
-      
+
       <div className="task-footer">
         {task.due_date ? (
           <span className="due-date">
@@ -30,9 +37,9 @@ const TaskCard = ({ task, onEdit, onDelete, onStatusChange }) => {
         ) : (
           <span></span>
         )}
-        
-        <select 
-          value={task.status} 
+
+        <select
+          value={task.status}
           onChange={(e) => onStatusChange(e.target.value)}
           className="status-select"
         >

@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { useTasks } from '../hooks/useTasks';
+import { useTasks, type Task } from '../hooks/useTasks';
 import TaskCard from '../components/TaskCard';
 import TaskModal from '../components/TaskModal';
 import { LogOut, Plus } from 'lucide-react';
@@ -9,19 +9,19 @@ const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
   const { tasks, loading, addTask, updateTask, deleteTask } = useTasks();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingTask, setEditingTask] = useState(null);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const handleCreate = () => {
     setEditingTask(null);
     setIsModalOpen(true);
   };
 
-  const handleEdit = (task) => {
+  const handleEdit = (task: Task) => {
     setEditingTask(task);
     setIsModalOpen(true);
   };
 
-  const handleSave = async (taskData) => {
+  const handleSave = async (taskData: Partial<Task>) => {
     if (editingTask) {
       await updateTask(editingTask.id, taskData);
     } else {
@@ -30,14 +30,14 @@ const Dashboard = () => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       await deleteTask(id);
     }
   };
 
   const columns = ['todo', 'in_progress', 'done'];
-  const columnTitles = {
+  const columnTitles: Record<string, string> = {
     'todo': 'To Do',
     'in_progress': 'In Progress',
     'done': 'Done'
@@ -56,14 +56,14 @@ const Dashboard = () => {
           </div>
         </div>
       </header>
-      
+
       <main className="dashboard-content">
         <div className="board-actions">
           <button className="btn btn-primary" onClick={handleCreate}>
             <Plus size={16} /> New Task
           </button>
         </div>
-        
+
         {loading ? (
           <div className="loading-spinner">Loading tasks...</div>
         ) : (
@@ -73,12 +73,12 @@ const Dashboard = () => {
                 <h3 className="column-title">{columnTitles[status]}</h3>
                 <div className="task-list">
                   {tasks.filter(t => t.status === status).map(task => (
-                    <TaskCard 
-                      key={task.id} 
-                      task={task} 
+                    <TaskCard
+                      key={task.id}
+                      task={task}
                       onEdit={() => handleEdit(task)}
                       onDelete={() => handleDelete(task.id)}
-                      onStatusChange={(newStatus) => updateTask(task.id, { ...task, status: newStatus })}
+                      onStatusChange={(newStatus: string) => updateTask(task.id, { ...task, status: newStatus })}
                     />
                   ))}
                 </div>
@@ -87,12 +87,12 @@ const Dashboard = () => {
           </div>
         )}
       </main>
-      
+
       {isModalOpen && (
-        <TaskModal 
-          task={editingTask} 
-          onSave={handleSave} 
-          onClose={() => setIsModalOpen(false)} 
+        <TaskModal
+          task={editingTask}
+          onSave={handleSave}
+          onClose={() => setIsModalOpen(false)}
         />
       )}
     </div>
