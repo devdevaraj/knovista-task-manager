@@ -30,39 +30,50 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <h2>Welcome Back</h2>
-        <p className="auth-subtitle">Sign in to manage your tasks</p>
-
-        {error && <div className="error-message">{error}</div>}
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Enter your email"
-            />
+      <div className="auth-left">
+        <div className="auth-card">
+          <h2>Welcome Back</h2>
+          <p className="auth-subtitle">Sign in to manage your tasks</p>
+          
+          {error && <div className="error-message">{error}</div>}
+          
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Email Address</label>
+              <input 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required 
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
+                placeholder="Enter your password"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+          </form>
+          
+          <div className="auth-footer">
+            Don't have an account? <Link to="/register">Sign up</Link>
           </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Enter your password"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary btn-block">Sign In</button>
-        </form>
-
-        <div className="auth-footer">
-          Don't have an account? <Link to="/register">Sign up</Link>
         </div>
+      </div>
+      <div className="auth-right">
+        <div style={{ zIndex: 10 }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>KnoVista</h1>
+          <p style={{ fontSize: '1.25rem', opacity: 0.9 }}>Empowering your productivity with modern task management.</p>
+        </div>
+        {/* Background decorative circles */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }}></div>
+        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }}></div>
       </div>
     </div>
   );
