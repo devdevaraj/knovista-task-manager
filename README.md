@@ -100,7 +100,17 @@ Before you begin, ensure you have the following installed on your system:
 5. Access the application:
    Open your browser and navigate to the URL provided by Vite (usually `http://localhost:5173`).
 
-### 3. Usage
+### 3. Alternative: Run Both Servers Simultaneously
+Instead of opening two separate terminals for the frontend and backend, you can use the provided bash script to run both servers concurrently in a single terminal session.
+
+Ensure you have completed the installation steps (`composer install`, `npm install`, `.env` setup, and migrations) first. Then, from the project root directory, run:
+
+```bash
+./run.sh
+```
+This script starts both the Laravel API and the Vite development server. You can cleanly shut down both servers simultaneously by pressing `Ctrl+C`.
+
+### 4. Usage
 - **Register**: Create a new account to receive an authentication token.
 - **Login**: Log in using your credentials to access the dashboard.
 - **Manage Tasks**: Use the Kanban board to create, edit, move, and delete tasks dynamically.
