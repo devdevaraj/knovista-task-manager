@@ -32,7 +32,7 @@ const Register = () => {
         <div className="auth-card">
           <h2>Create an Account</h2>
           <p className="auth-subtitle">Join us and start organizing your work</p>
-          
+
           {errors.general && (
             <div className="error-message">
               {errors.general.map((err: string, index: number) => (
@@ -40,58 +40,58 @@ const Register = () => {
               ))}
             </div>
           )}
-          
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Full Name</label>
-              <input 
-                type="text" 
-                value={name} 
-                onChange={(e) => setName(e.target.value)} 
-                required 
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
                 placeholder="Enter your full name"
               />
               {errors.name && <span className="error-text">{errors.name[0]}</span>}
             </div>
-            
+
             <div className="form-group">
               <label>Email Address</label>
-              <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 placeholder="Enter your email"
               />
               {errors.email && <span className="error-text">{errors.email[0]}</span>}
             </div>
-            
+
             <div className="form-group">
               <label>Password</label>
-              <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
                 placeholder="Create a password"
               />
               {errors.password && <span className="error-text">{errors.password[0]}</span>}
             </div>
-            
+
             <div className="form-group">
               <label>Confirm Password</label>
-              <input 
-                type="password" 
-                value={passwordConfirmation} 
-                onChange={(e) => setPasswordConfirmation(e.target.value)} 
-                required 
+              <input
+                type="password"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                required
                 placeholder="Confirm your password"
               />
             </div>
-            
+
             <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
           </form>
-          
+
           <div className="auth-footer">
             Already have an account? <Link to="/login">Sign in</Link>
           </div>
@@ -99,7 +99,7 @@ const Register = () => {
       </div>
       <div className="auth-right">
         <div style={{ zIndex: 10 }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>Join KnoVista</h1>
+          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>Join My Task</h1>
           <p style={{ fontSize: '1.25rem', opacity: 0.9 }}>Experience seamless task management tailored for teams.</p>
         </div>
         {/* Background decorative circles */}

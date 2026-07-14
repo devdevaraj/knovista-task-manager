@@ -3,7 +3,7 @@
 set -e
 
 echo "========================================="
-echo " Starting KnoVista Task Manager "
+echo " Starting Task Manager "
 echo "========================================="
 
 echo "[1/2] Starting Backend (Laravel) at http://127.0.0.1:8000..."

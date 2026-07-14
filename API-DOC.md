@@ -1,12 +1,6 @@
----
-File Path: /home/devaraj/code/works/knovista-task-manager/api-documentation.md
-Created At: 2026-07-14T14:25:10+05:30
-Completed At: 2026-07-14T14:25:10+05:30
----
+# Task Manager - API Documentation
 
-# Knovista Task Manager - API Documentation
-
-This document describes the complete RESTful backend API for the Knovista Task Manager.
+This document describes the complete RESTful backend API for the Task Manager.
 
 ## Base URL
 

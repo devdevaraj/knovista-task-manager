@@ -34,33 +34,33 @@ const Login = () => {
         <div className="auth-card">
           <h2>Welcome Back</h2>
           <p className="auth-subtitle">Sign in to manage your tasks</p>
-          
+
           {error && <div className="error-message">{error}</div>}
-          
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Email Address</label>
-              <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 placeholder="Enter your email"
               />
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
                 placeholder="Enter your password"
               />
             </div>
             <button type="submit" className="btn btn-primary btn-block">Sign In</button>
           </form>
-          
+
           <div className="auth-footer">
             Don't have an account? <Link to="/register">Sign up</Link>
           </div>
@@ -68,7 +68,7 @@ const Login = () => {
       </div>
       <div className="auth-right">
         <div style={{ zIndex: 10 }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>KnoVista</h1>
+          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>My Task</h1>
           <p style={{ fontSize: '1.25rem', opacity: 0.9 }}>Empowering your productivity with modern task management.</p>
         </div>
         {/* Background decorative circles */}
