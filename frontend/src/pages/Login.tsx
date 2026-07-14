@@ -67,7 +67,8 @@ const Login = () => {
         </div>
       </div>
       <div className="auth-right">
-        <div style={{ zIndex: 10 }}>
+        <div style={{ zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img src="/logo.png" alt="My Task Logo" style={{ height: '80px', width: '80px', borderRadius: '20px', marginBottom: '1.5rem', boxShadow: '0 10px 25px rgba(0,0,0,0.2)' }} />
           <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>My Task</h1>
           <p style={{ fontSize: '1.25rem', opacity: 0.9 }}>Empowering your productivity with modern task management.</p>
         </div>
